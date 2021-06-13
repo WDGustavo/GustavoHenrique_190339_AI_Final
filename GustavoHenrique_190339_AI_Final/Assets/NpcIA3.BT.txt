@@ -12,7 +12,7 @@ tree("Vigia")
 	fallback
 		//chama a arvore de ataque
 		tree("Attack")
-		while IsHealthLessThan(100.0)
+		while not SeePlayer
 			//faz a descisão para se não ocorrer a ação setada va para a proxima
 			fallback
 				//chama a arvore de olhar aos arredores

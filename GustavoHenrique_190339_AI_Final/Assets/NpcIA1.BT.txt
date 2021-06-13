@@ -23,7 +23,7 @@ tree("Patrol")
 		//cria a arvore de ataque
 		tree("Attack")
 		//se a vida for menor que 40
-		while IsHealthLessThan(40.0)
+		while not SeePlayer
 			//faz a descisão para se não ocorrer a ação setada va para a proxima
 			fallback
 				//chama a arvore de wander
@@ -45,10 +45,11 @@ tree("Attack")
 
 //cria a arvore de Wander
 tree("Wander")
-	//faz uma sequencia
-	sequence
-		//Faz uma escolha aleatoria de posição
-		PickRandomDestination
-		//Se move para o local escolhido aleatoriamente
-		MoveToDestination
+	while not SeePlayer
+		//faz uma sequencia
+		sequence
+			//Faz uma escolha aleatoria de posição
+			PickRandomDestination
+			//Se move para o local escolhido aleatoriamente
+			MoveToDestination
 

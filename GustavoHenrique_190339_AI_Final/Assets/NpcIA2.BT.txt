@@ -13,7 +13,7 @@ tree("Seguir")
 	fallback
 		//chama a arvore de seguir
 		tree("Seek")
-		while IsHealthLessThan(20.0)
+		while not SeePlayer
 			//faz a descisão para se não ocorrer a ação setada va para a proxima
 			fallback
 				//chama a arvore de wander

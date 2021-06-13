@@ -13,7 +13,7 @@ tree("Patrol")
 			//chama a arvore de run
 			tree("Run")	
 			//se a vida for menor que
-			while IsHealthLessThan(100.0)
+			while not SeePlayer
 				//faz a descisão para se não ocorrer a ação setada va para a proxima
 				fallback 
 					//chama a arvore de wander

@@ -30,6 +30,8 @@ public class AI : MonoBehaviour
     {
         //pega o componente navmesh do asset
         agent = this.GetComponent<NavMeshAgent>();
+        //faz ele ir diminuindo a velocidade quando estiver chegando no distino
+        agent.stoppingDistance = shotRange - 5; //for a little buffer
         //sempre faz o update da vida do npc
         InvokeRepeating("UpdateHealth",5,0.5f);
     }
@@ -158,6 +160,7 @@ public class AI : MonoBehaviour
         Vector3 direction = target - this.transform.position;
         //faz a rotação ser mais suave
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotSpeed);
+        agent.SetDestination(transform.position);
         //se estiver rodando a aplicação
         if (Task.isInspected)
         {
