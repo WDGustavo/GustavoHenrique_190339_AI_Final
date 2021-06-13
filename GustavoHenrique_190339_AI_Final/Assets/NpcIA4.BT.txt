@@ -1,0 +1,49 @@
+//cria a raiz da arvore de comportamento
+tree("Root")
+	parallel
+		//vai repetir a condição patrol
+		repeat mute tree("Patrol")
+		//vai repetir a condição de morte
+		repeat mute tree("Dead")
+
+//cria a arvore de patrulha
+tree("Patrol")
+	//faz a descisão para se não ocorrer a ação setada va para a proxima
+		fallback
+			//chama a arvore de run
+			tree("Run")	
+			//se a vida for menor que
+			while IsHealthLessThan(100.0)
+				//faz a descisão para se não ocorrer a ação setada va para a proxima
+				fallback 
+					//chama a arvore de wander
+					tree("Wander")
+
+//cria a arvore de run
+tree("Run")
+	//caso veja o player
+	while SeePlayer
+		//fala que é uma seguencia
+		sequence
+			//pega a posição do player
+			TargetPlayer
+			//foge
+			Fugir
+
+//cria a arvore de morte
+tree("Dead")
+	//faz uma sequencia
+	sequence
+		//se a vida for menor que 1
+		IsHealthLessThan(0.1)
+		//explode
+		Explode
+
+//cria a arvore de Wander
+tree("Wander")
+	//faz uma sequencia
+	sequence
+		//Faz uma escolha aleatoria de posição
+		PickRandomDestination
+		//Se move para o local escolhido aleatoriamente
+		MoveToDestination
